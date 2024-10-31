@@ -91,7 +91,7 @@ tasks.jar {
 
 fun convertMinecraftTargets(): String {
     val split = common.mod.prop("mc_targets").split(" ")
-    return ">=${split[0]} <=${split[split.size-1]}"
+    return ">=${split[0]} <=${split[split.size - 1]}"
 }
 
 tasks.processResources {

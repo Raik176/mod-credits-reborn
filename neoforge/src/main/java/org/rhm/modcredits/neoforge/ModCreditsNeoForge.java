@@ -12,33 +12,33 @@ import java.util.Optional;
 
 @Mod("modcredits")
 public class ModCreditsNeoForge {
-	public ModCreditsNeoForge() {
-		ModCreditsCommon.loaderInfo = () -> new LoaderInfo(
+    public ModCreditsNeoForge() {
+        ModCreditsCommon.loaderInfo = () -> new LoaderInfo(
                 "NeoForge Loader",
                 "NeoForge",
                 List.of("Neoforged Team")
         );
-		ModCreditsCommon.mods = () -> {
-			List<ModInfo> mods = new ArrayList<>();
+        ModCreditsCommon.mods = () -> {
+            List<ModInfo> mods = new ArrayList<>();
 
-			ModList.get().forEachModContainer((id, container) -> {
-				if (!(id.equals("minecraft")
-						|| id.equals("neoforge")
-						|| id.startsWith("generated_")))  {
-					String[] authors = new String[] {};
-					// yikes
-					Optional<Object> modAuthors = container.getModInfo().getConfig().getConfigElement("authors");
-					if (modAuthors.isPresent())
-						authors = modAuthors.get().toString().split("[,\\s]+"); // should match most things
-					mods.add(new ModInfo(
-							container.getModInfo().getDisplayName(),
+            ModList.get().forEachModContainer((id, container) -> {
+                if (!(id.equals("minecraft")
+                        || id.equals("neoforge")
+                        || id.startsWith("generated_"))) {
+                    String[] authors = new String[]{};
+                    // yikes
+                    Optional<Object> modAuthors = container.getModInfo().getConfig().getConfigElement("authors");
+                    if (modAuthors.isPresent())
+                        authors = modAuthors.get().toString().split("[,\\s]+"); // should match most things
+                    mods.add(new ModInfo(
+                            container.getModInfo().getDisplayName(),
                             List.of(authors)
-					));
-				}
-			});
+                    ));
+                }
+            });
 
-			return mods;
-		};
-		ModCreditsCommon.init();
-	}
+            return mods;
+        };
+        ModCreditsCommon.init();
+    }
 }

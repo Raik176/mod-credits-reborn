@@ -25,9 +25,7 @@ base {
 }
 
 configurations.all {
-    resolutionStrategy {
-        force("net.sf.jopt-simple:jopt-simple:5.0.4")
-    }
+    resolutionStrategy.force("net.sf.jopt-simple:jopt-simple:5.0.4")
 }
 
 architectury {
@@ -55,10 +53,6 @@ repositories {
     mavenCentral()
 
     maven("https://maven.minecraftforge.net")
-    maven {
-        name = "Jared's maven"
-        url = uri("https://maven.blamejared.com/")
-    }
 }
 
 dependencies {

@@ -8,5 +8,6 @@
 </div>
 
 # Mod Credits Reborn
+
 Mod Credits Reborn adds mod authorship credits to the default credits screen.
 ![Example](https://i.imgur.com/dsKRUOR.png)
