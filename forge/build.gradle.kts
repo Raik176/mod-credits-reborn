@@ -23,6 +23,13 @@ group = "${mod.group}.$loader"
 base {
     archivesName.set("${mod.id}-$loader")
 }
+
+configurations.all {
+    resolutionStrategy {
+        force("net.sf.jopt-simple:jopt-simple:5.0.4")
+    }
+}
+
 architectury {
     platformSetupLoomIde()
     forge()
@@ -45,6 +52,8 @@ configurations {
 }
 
 repositories {
+    mavenCentral()
+
     maven("https://maven.minecraftforge.net")
     maven {
         name = "Jared's maven"
@@ -56,10 +65,6 @@ dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
     "forge"("net.minecraftforge:forge:$minecraft-${common.mod.dep("forge_loader")}")
-    "io.github.llamalad7:mixinextras-forge:${mod.dep("mixin_extras")}".let {
-        implementation(it)
-        include(it)
-    }
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionForge")) { isTransitive = false }
@@ -147,7 +152,7 @@ publishMods {
 
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
-        projectId = "oQborhDc"
+        projectId = common.extra["modrinthId"].toString()
         minecraftVersions.addAll(common.mod.prop("mc_targets").split(" "))
         projectDescription = providers.fileContents(common.layout.projectDirectory.file("../../README.md")).asText.get()
     }

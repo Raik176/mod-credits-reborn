@@ -8,6 +8,9 @@ plugins {
 
 val minecraft = stonecutter.current.version
 
+extra["githubRepo"] = "Raik176/mod-credits-reborn"
+extra["modrinthId"] = "IGLFQSV1"
+
 version = "${mod.version}+$minecraft"
 group = "${mod.group}.common"
 base {
@@ -23,10 +26,6 @@ dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
-    "io.github.llamalad7:mixinextras-common:${mod.dep("mixin_extras")}".let {
-        annotationProcessor(it)
-        implementation(it)
-    }
 }
 
 loom {
@@ -59,7 +58,7 @@ publishMods {
 
     github {
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
-        repository = "CHANGE/THIS"
+        repository = extra["githubRepo"].toString()
         commitish = "master"
         tagName = "v${mod.version}"
 

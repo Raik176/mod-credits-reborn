@@ -51,10 +51,6 @@ dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings(loom.officialMojangMappings())
     "neoForge"("net.neoforged:neoforge:${common.mod.dep("neoforge_loader")}")
-    "io.github.llamalad7:mixinextras-neoforge:${mod.dep("mixin_extras")}".let {
-        implementation(it)
-        include(it)
-    }
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionNeoForge")) { isTransitive = false }
@@ -138,7 +134,7 @@ publishMods {
 
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
-        projectId = "oQborhDc"
+        projectId = common.extra["modrinthId"].toString()
         minecraftVersions.addAll(common.mod.prop("mc_targets").split(" "))
         projectDescription = providers.fileContents(common.layout.projectDirectory.file("../../README.md")).asText.get()
     }

@@ -25,4 +25,4 @@ stonecutter {
     }
 }
 
-rootProject.name = "Template Mod"
+rootProject.name = "Modcredits Reborn"
