@@ -20,7 +20,7 @@ stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chisele
     ofTask("buildAndCollect")
 }
 
-for (it in listOf("Mods", "Github", "Modrinth")) {
+for (it in listOf("Mods", "Github", "Modrinth", "Curseforge")) {
     stonecutter registerChiseled tasks.register("chiseledPublish$it", stonecutter.chiseled) {
         group = "publishing"
         ofTask("publish$it")

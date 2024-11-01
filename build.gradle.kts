@@ -10,6 +10,7 @@ val minecraft = stonecutter.current.version
 
 extra["githubRepo"] = "Raik176/mod-credits-reborn"
 extra["modrinthId"] = "IGLFQSV1"
+extra["curseforgeId"] = "1132420"
 
 version = "${mod.version}+$minecraft"
 group = "${mod.group}.common"
