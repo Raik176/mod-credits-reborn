@@ -1,1 +1,1 @@
-No changelog provided.
+Added support for more versions.

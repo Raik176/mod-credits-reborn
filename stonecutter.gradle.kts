@@ -4,17 +4,25 @@ plugins {
     id("architectury-plugin") version "3.4-SNAPSHOT" apply false
     id("com.github.johnrengelman.shadow") version "8.1.1" apply false
 }
-stonecutter active "1.17.1" /* [SC] DO NOT EDIT */
+stonecutter active "1.20.6" /* [SC] DO NOT EDIT */
 stonecutter.automaticPlatformConstants = true
 
+stonecutter parameters {
+    swap("mod_version", "\"${property("mod.version")}\";")
+}
+
+stonecutter registerChiseled tasks.register("chiseledClean", stonecutter.chiseled) {
+    group = "build"
+    ofTask("clean")
+}
 stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) {
-    group = "project"
+    group = "build"
     ofTask("buildAndCollect")
 }
 
 for (it in listOf("Mods", "Github", "Modrinth")) {
     stonecutter registerChiseled tasks.register("chiseledPublish$it", stonecutter.chiseled) {
-        group = "project"
+        group = "publishing"
         ofTask("publish$it")
     }
 }
