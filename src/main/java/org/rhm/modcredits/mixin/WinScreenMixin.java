@@ -3,7 +3,6 @@ package org.rhm.modcredits.mixin;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.WinScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import org.rhm.modcredits.LoaderInfo;
 import org.rhm.modcredits.ModCreditsCommon;
 import org.rhm.modcredits.ModInfo;
@@ -22,8 +21,10 @@ import java.io.Reader;
 import java.util.List;
 import java.util.stream.Stream;
 
-//? if <1.19
-/*import net.minecraft.network.chat.TextComponent;*/
+//? if <1.19 {
+/*import net.minecraft.network.chat.TextComponent;
+*///?} else
+import net.minecraft.network.chat.MutableComponent;
 
 @Mixin(WinScreen.class)
 public abstract class WinScreenMixin {

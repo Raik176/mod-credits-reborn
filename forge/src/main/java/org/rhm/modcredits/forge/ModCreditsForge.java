@@ -26,6 +26,9 @@ public class ModCreditsForge {
                         || id.startsWith("generated_"))) {
                     String[] authors = new String[]{};
                     // yikes
+                    //? if <1.16 {
+                    /*Optional<Object> modAuthors = container.getModInfo().getModConfig().getOptional("authors");
+                    *///?} else
                     Optional<Object> modAuthors = container.getModInfo().getConfig().getConfigElement("authors");
                     if (modAuthors.isPresent())
                         authors = modAuthors.get().toString().split("[,\\s]+"); // should match most things
