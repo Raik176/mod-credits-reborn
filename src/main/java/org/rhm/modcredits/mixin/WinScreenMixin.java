@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
+import java.awt.*;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
@@ -106,6 +107,9 @@ public abstract class WinScreenMixin {
     }
 
     @Unique
+    //? if <1.19 {
+    /*private TextComponent ModCreditsReborn$literalComponent(String literal) {
+    *///?} else
     private MutableComponent ModCreditsReborn$literalComponent(String literal) {
         //? if <1.19 {
         /*return new TextComponent(literal);
