@@ -18,7 +18,7 @@ stonecutter {
     centralScript = "build.gradle.kts"
     kotlinController = true
     create(rootProject) { // only have 1.20.6 cause of neoforge
-        versions("1.17.1", "1.18", "1.19", "1.20.6")
+        versions("1.15", "1.17.1", "1.18", "1.19", "1.20.6")
         vcsVersion = "1.20.6"
 
         branch("fabric")
