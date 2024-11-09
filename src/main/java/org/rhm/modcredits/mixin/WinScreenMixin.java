@@ -45,7 +45,7 @@ public abstract class WinScreenMixin {
             /*"init",
             *///?} else
             "addCreditsFile",
-            at = @At("HEAD")
+            at = @At("TAIL")
     )
     //? if <1.18 {
     /*private void init(CallbackInfo ci) {
