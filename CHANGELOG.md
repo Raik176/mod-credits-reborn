@@ -1,1 +1,2 @@
-Added support for more versions.
+Add mod icon
+Fix mixin crash on newer versions
