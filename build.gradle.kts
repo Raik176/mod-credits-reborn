@@ -39,6 +39,14 @@ loom {
     }
 }
 
+tasks.processResources {
+    properties(listOf("${mod.id}-common.mixins.json"),
+        "id" to mod.id,
+        "group" to mod.group,
+        "minecraft" to minecraft
+    )
+}
+
 java {
     withSourcesJar()
     val java = if (stonecutter.eval(minecraft, ">=1.20.5"))

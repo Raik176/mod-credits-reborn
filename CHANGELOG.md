@@ -1,2 +1,1 @@
-Add mod icon
-Fix mixin crash on newer versions
+Fix crash on some versions

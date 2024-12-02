@@ -15,9 +15,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
-import java.awt.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -41,22 +38,10 @@ public abstract class WinScreenMixin {
     @Shadow
     protected abstract void addEmptyLine();
 
-    // doing this so i can debug easier, as i can't use HEAD in init
-    @Inject(method =
-            //? if <1.18 {
-            /*"init",
-            *///?} else
-            "addCreditsFile",
-            at = @At("TAIL")
-    )
-    //? if <1.18 {
-    /*private void init(CallbackInfo ci) {
-    *///?} elif <1.19 {
-    /*private void addCreditsFile(InputStreamReader inputStreamReader, CallbackInfo ci) {*/
-    //?} else
-    private void addCreditsFile(Reader reader, CallbackInfo callbackInfo) {
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void init(CallbackInfo ci) {
         try {
-            LoaderInfo loaderInfo = ModCreditsCommon.loaderInfo.call();
+            LoaderInfo loaderInfo = ModCreditsCommon.impl.getLoaderInfo();
             this.addCreditsLine(SECTION_HEADING, true);
             this.addCreditsLine(ModCreditsReborn$literalComponent(loaderInfo.altName()).withStyle(ChatFormatting.YELLOW), true);
             this.addCreditsLine(SECTION_HEADING, true);
@@ -73,7 +58,7 @@ public abstract class WinScreenMixin {
 
             ModCreditsReborn$addCreditTitle("Mods");
             try {
-                for (ModInfo modInfo : ModCreditsCommon.mods.call()) {
+                for (ModInfo modInfo : ModCreditsCommon.impl.getMods()) {
                     ModCreditsReborn$addCreditSection(modInfo.modName(), Stream.concat(
                             modInfo.authors().stream(),
                             modInfo.contributors().stream()
