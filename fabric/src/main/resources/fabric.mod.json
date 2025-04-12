@@ -8,6 +8,9 @@
     "${author}"
   ],
   "contact": {
+    "homepage": "https://rhm176.de",
+    "issues": "https://github.com/Raik176/mod-credits-reborn/issues",
+    "sources": "https://github.com/Raik176/mod-credits-reborn"
   },
   "license": "${license}",
   "icon": "assets/${id}/icon.png",

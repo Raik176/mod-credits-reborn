@@ -1,1 +1,1 @@
-Fix crash on some versions
+Feat: support 1.21.4 & 1.21.5

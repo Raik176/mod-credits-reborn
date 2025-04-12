@@ -1,6 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "*"
 license = "${license}"
+issueTrackerURL = "https://github.com/Raik176/mod-credits-reborn/issues"
 
 [[mods]]
 modId = "${id}"

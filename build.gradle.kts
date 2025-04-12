@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.version
-
 plugins {
     id("dev.architectury.loom")
     id("architectury-plugin")
@@ -16,6 +14,12 @@ version = "${mod.version}+$minecraft"
 group = "${mod.group}.common"
 base {
     archivesName.set("${mod.id}-common")
+}
+
+tasks.jar {
+    from(rootProject.file("LICENSE")) {
+        rename { "${mod.id}_LICENSE.md" }
+    }
 }
 
 architectury.common(stonecutter.tree.branches.mapNotNull {
